@@ -40,61 +40,39 @@ const ExampleContainer = () => {
         Gutters.smallHPadding,
       ]}
     >
-      <View style={[[Layout.colCenter, Gutters.smallHPadding]]}>
-        <Brand />
-        {(isLoading || isFetching) && <ActivityIndicator />}
-        {!isSuccess ? (
-          <Text style={Fonts.textRegular}>{error}</Text>
-        ) : (
-          <Text style={Fonts.textRegular}>
-            {t('example.helloUser', { name: data?.name })}
-          </Text>
-        )}
-      </View>
-      <View
-        style={[
-          Layout.row,
-          Layout.rowHCenter,
-          Gutters.smallHPadding,
-          Gutters.largeVMargin,
-          Common.backgroundPrimary,
-        ]}
-      >
-        <Text style={[Layout.fill, Fonts.textCenter, Fonts.textSmall]}>
-          {t('example.labels.userId')}
-        </Text>
-        <TextInput
-          onChangeText={setUserId}
-          editable={!isLoading}
-          keyboardType={'number-pad'}
-          maxLength={1}
-          value={userId}
-          selectTextOnFocus
-          style={[Layout.fill, Common.textInput]}
-        />
-      </View>
-      <Text style={[Fonts.textRegular, Gutters.smallBMargin]}>DarkMode :</Text>
-
-      <TouchableOpacity
-        style={[Common.button.rounded, Gutters.regularBMargin]}
-        onPress={() => onChangeTheme({ darkMode: null })}
-      >
-        <Text style={Fonts.textRegular}>Auto</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[Common.button.outlineRounded, Gutters.regularBMargin]}
-        onPress={() => onChangeTheme({ darkMode: true })}
-      >
-        <Text style={Fonts.textRegular}>Dark</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={[Common.button.outline, Gutters.regularBMargin]}
-        onPress={() => onChangeTheme({ darkMode: false })}
-      >
-        <Text style={Fonts.textRegular}>Light</Text>
-      </TouchableOpacity>
+       <Text style={[Fonts.h1]}>h1</Text>
+                <Text style={[Fonts.h2]}>h2</Text>
+                <Text style={[Fonts.h3]}>h3</Text>
+                <Text style={[Fonts.h4]}>h4</Text>
+                <Text style={[Fonts.h5]}>h5</Text>
+                <Text style={[Fonts.a]}>a</Text>
+                <Text style={[Fonts.p]}>p</Text>
+                <View>
+                <Text style={[Fonts.h4]}>Label is here</Text>
+                <View style={[Common.textInput, Layout.rowCenter]}>
+                    <TextInput style={[Fonts.p, { paddingLeft: 10, fontWeight: '600', width: '85%' }]} cursorColor={Colors.text}></TextInput>
+                    <TouchableOpacity>
+                        <Icon name="eye" size={22} color={Colors.text}></Icon>
+                    </TouchableOpacity>
+                </View>
+                </View>
+                <TouchableOpacity style={[Common.primaryBtn]}>
+                    <Text style={[Fonts.h3,{color:Colors.white}]}>
+                        Login
+                    </Text>
+                </TouchableOpacity>
+                <Select data={['October']} label="Test"></Select>
+                <TouchableOpacity style={[Common.calanderDayActive]}>
+                    <Text style={[Fonts.h4,{color:Colors.primary,}]}>
+                        1
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={[Common.calanderDay]}>
+                    <Text style={[Fonts.h4,{color:Colors.primary,}]}>
+                        1
+                    </Text>
+                </TouchableOpacity>
+                <View style={{marginTop:20}}></View>
     </ScrollView>
   )
 }

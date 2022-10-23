@@ -22,14 +22,68 @@ export default function ({ Colors, ...args }) {
       },
       textInput: {
         borderWidth: 1,
-        borderColor: Colors.text,
-        backgroundColor: Colors.inputBackground,
+        borderColor: Colors.primary,
+        backgroundColor: Colors.white,
+        borderRadius:10,
         color: Colors.text,
-        minHeight: 50,
+        maxHeight: 50,
         textAlign: 'center',
         marginTop: 10,
         marginBottom: 10,
       },
+      primaryBtn:{
+        backgroundColor:Colors.primary,
+        height:50,
+        width:'100%',
+        display:'flex',
+        justifyContent: 'center',
+        alignItems:'center',
+        borderRadius:10,
+        elevation:2
+      },
+      select:{
+        borderRadius:10,
+        borderWidth: 1,
+        borderColor: Colors.primary,
+        backgroundColor: Colors.white,
+      },
+      calanderDayActive:{
+        width:40,
+        height:40,
+        borderRadius:20,
+        borderWidth: 1,
+        backgroundColor:Colors.successLight,
+        borderColor: Colors.primary,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      },
+      calanderDay:{
+        width:40,
+        height:40,
+        backgroundColor:Colors.white,
+        borderRadius:20,
+        borderWidth: 1,
+        borderColor: Colors.primary,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center'
+      },
+      dangerAlert:{
+        backgroundColor:Colors.error,
+        padding:15,
+        borderRadius:10
+      },
+      warningAlert:{
+        backgroundColor:Colors.warning,
+        padding:15,
+        borderRadius:10
+      },
+      successAlert:{
+        backgroundColor:Colors.success,
+        padding:15,
+        borderRadius:10
+      }
     }),
   }
 }

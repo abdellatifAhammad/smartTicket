@@ -6,18 +6,18 @@ import { StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
+import { Colors } from '@/Theme/Variables'
 
 const Stack = createStackNavigator()
 
 // @refresh reset
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
-  const { colors } = NavigationTheme
 
   return (
-    <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
+    <SafeAreaView style={[Layout.fill, { backgroundColor: Colors.primary }]}>
       <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
-        <StatusBar barStyle={darkMode ? 'light-content' : 'dark-content'} />
+        <StatusBar barStyle={'light-content'} backgroundColor={Colors.primary} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Startup" component={StartupContainer} />
           <Stack.Screen
@@ -25,6 +25,7 @@ const ApplicationNavigator = () => {
             component={MainNavigator}
             options={{
               animationEnabled: false,
+              headerShown: false
             }}
           />
         </Stack.Navigator>
