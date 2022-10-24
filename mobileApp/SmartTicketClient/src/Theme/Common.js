@@ -27,7 +27,7 @@ export default function ({ Colors, ...args }) {
         borderRadius:10,
         color: Colors.text,
         maxHeight: 50,
-        textAlign: 'center',
+        textAlign: 'left',
         marginTop: 10,
         marginBottom: 10,
       },
@@ -39,7 +39,6 @@ export default function ({ Colors, ...args }) {
         justifyContent: 'center',
         alignItems:'center',
         borderRadius:10,
-        elevation:2
       },
       select:{
         borderRadius:10,
@@ -57,7 +56,20 @@ export default function ({ Colors, ...args }) {
         display:'flex',
         justifyContent:'center',
         alignItems:'center',
-        marginRight:5,
+        marginRight:8,
+        marginBottom:8
+      },
+      calanderDayEmpty:{
+        width:40,
+        height:40,
+        // borderRadius:20,
+        // borderWidth: 1,
+        // backgroundColor:Colors.successLight,
+        // borderColor: Colors.primary,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        marginRight:8,
         marginBottom:8
       },
       calanderDaysNames:{

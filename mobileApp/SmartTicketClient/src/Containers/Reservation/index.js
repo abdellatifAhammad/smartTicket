@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { Dimensions, ScrollView, Text, View } from 'react-native';
 import  Icon  from 'react-native-vector-icons/Ionicons';
 
-const ReservationContainer = ({ }) => {
+const ReservationContainer = ({navigation}) => {
     const [selected,setSelected] = useState(moment(Date.now()).format("MMM"))
     const { width, height } = Dimensions.get('window');
     const { Layout, Fonts, Common, Images } = useTheme();
@@ -18,7 +18,7 @@ const ReservationContainer = ({ }) => {
 
     return (
         <View style={{ backgroundColor: Colors.primary, flex: 1 }}>
-            <Header></Header>
+            <Header navigation={navigation}></Header>
             <ScrollView showsVerticalScrollIndicator={false} style={{ borderTopLeftRadius: 35, borderTopRightRadius: 35, backgroundColor: Colors.white, flex: 1, marginTop: 30, paddingBottom: 50, paddingHorizontal: 20, paddingVertical: 20 }}>
                 <View style={[Layout.row,{marginTop:20}]}>
                     <Icon name="filter-outline" size={20} color={Colors.text} ></Icon>

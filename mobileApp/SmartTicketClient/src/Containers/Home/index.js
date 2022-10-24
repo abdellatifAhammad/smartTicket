@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Carousel from 'react-native-reanimated-carousel';
 import { interpolate } from 'react-native-reanimated';
 
-const HomeContainer = ({ }) => {
+const HomeContainer = ({navigation}) => {
     const [activated, setActivated] = useState(false);
     const { width, height } = Dimensions.get('window');
     const scrollRef = useRef();
@@ -39,8 +39,8 @@ const HomeContainer = ({ }) => {
     );
     return (
         <View style={{ backgroundColor: Colors.primary, flex: 1 }}>
-            <Header></Header>
-            <ScrollView showsVerticalScrollIndicator={false} style={{ borderTopLeftRadius: 35, borderTopRightRadius: 35, backgroundColor: Colors.white, flex: 1, marginTop: 30,paddingBottom:50, paddingHorizontal: 20, paddingVertical: 20 }}>
+            <Header navigation={navigation}></Header>
+            <ScrollView showsVerticalScrollIndicator={false} style={{ borderTopLeftRadius: 35, borderTopRightRadius: 35, backgroundColor: Colors.white, flex: 1, marginTop: 30, paddingBottom: 50, paddingHorizontal: 20, paddingVertical: 20 }}>
                 {activated ?
                     <View>
                         <AlertBox style={{ marginTop: 15 }} type={"warning"} text={'You have to Activate your Account to Start using Smart Ticket'}></AlertBox>
@@ -78,7 +78,7 @@ const HomeContainer = ({ }) => {
                                 // onSnapToItem={(index) => setCurrentSlide(index)}
                                 snapEnabled={true}
                                 renderItem={({ index }) => (
-                                    <View style={{ width: '100%', height: 150, padding: 10 }}>
+                                    <TouchableOpacity onPress={()=>{navigation.navigate('Scan Qr')}} style={{ width: '100%', height: 150, padding: 10 }}>
                                         <View style={[{ position: 'absolute', zIndex: 3, top: 20, left: 35, width: 150 }]}>
                                             <Text style={[Fonts.h2, { color: 'white' }]}>Launch Meal</Text>
                                             <Text style={[Fonts.h5, { color: 'white', opacity: 0.8 }]}>
@@ -86,48 +86,48 @@ const HomeContainer = ({ }) => {
                                             </Text>
                                         </View>
                                         <ImageBackground source={Images.ticket} style={{ width: '100%', height: '100%' }}></ImageBackground>
-                                    </View>
+                                    </TouchableOpacity>
                                 )}
                                 customAnimation={animationStyle}
                                 ref={scrollRef}
                             />
-                            <TouchableOpacity onPress={()=>{scrollRef.current.next()}} style={[{elevation:3,backgroundColor:'white',width:35,height:35,borderRadius:20,position: 'absolute',top:75,right:2,zIndex: 4,},Layout.rowCenter]}>
-                                    <Icon name="chevron-forward-outline" size={25}></Icon>
+                            <TouchableOpacity onPress={() => { scrollRef.current.next() }} style={[{ elevation: 3, backgroundColor: 'white', width: 35, height: 35, borderRadius: 20, position: 'absolute', top: 75, right: 2, zIndex: 4, }, Layout.rowCenter]}>
+                                <Icon name="chevron-forward-outline" size={25}></Icon>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={()=>{scrollRef.current.prev()}} style={[{elevation:3,backgroundColor:'white',width:35,height:35,borderRadius:20,position: 'absolute',top:75,left:2,zIndex: 4,},Layout.rowCenter]}>
-                                    <Icon name="chevron-back-outline" size={25}></Icon>
+                            <TouchableOpacity onPress={() => { scrollRef.current.prev() }} style={[{ elevation: 3, backgroundColor: 'white', width: 35, height: 35, borderRadius: 20, position: 'absolute', top: 75, left: 2, zIndex: 4, }, Layout.rowCenter]}>
+                                <Icon name="chevron-back-outline" size={25}></Icon>
                             </TouchableOpacity>
                         </View>
                         <View style={[Layout.row]}>
                             <Icon name="card-outline" size={20} color={Colors.text} ></Icon>
                             <Text style={[{ marginHorizontal: 10 }, Fonts.h5]}>Your Balance</Text>
                         </View>
-                        <View style={[Layout.rowCenter,{marginTop:20}]}>
-                            <Text style={[Fonts.h1,{color:Colors.primary}]}>
+                        <View style={[Layout.rowCenter, { marginTop: 20 }]}>
+                            <Text style={[Fonts.h1, { color: Colors.primary }]}>
                                 100.00<Text style={[Fonts.h3]}> DH</Text>
                             </Text>
                         </View>
-                        
-                        <View style={[Layout.row,{marginVertical:15}]}>
+
+                        <View style={[Layout.row, { marginVertical: 15 }]}>
                             <Icon name="wallet-outline" size={20} color={Colors.text} ></Icon>
                             <Text style={[{ marginHorizontal: 10 }, Fonts.h5]}>Latest Payments</Text>
                         </View>
 
-                        <View style={{paddingHorizontal:10}}>
-                            <View style={[Layout.row,Layout.justifyContentBetween,{backgroundColor:'rgba(19, 24, 43, 0.09)',padding:10,borderRadius:10}]}>
-                                    <Text style={[Fonts.p,{color:'rgba(19, 24, 43, 0.75)'}]}>Date</Text>
-                                    <Text  style={[Fonts.p,{color:'rgba(19, 24, 43, 0.75)'}]}>Total Price</Text>
+                        <View style={{ paddingHorizontal: 10 }}>
+                            <View style={[Layout.row, Layout.justifyContentBetween, { backgroundColor: 'rgba(19, 24, 43, 0.09)', padding: 10, borderRadius: 10 }]}>
+                                <Text style={[Fonts.p, { color: 'rgba(19, 24, 43, 0.75)' }]}>Date</Text>
+                                <Text style={[Fonts.p, { color: 'rgba(19, 24, 43, 0.75)' }]}>Total Price</Text>
                             </View>
-                            <View style={{padding:10}}>
-                            <View style={[Layout.row,Layout.justifyContentBetween,{marginVertical:10}]}>
+                            <View style={{ padding: 10 }}>
+                                <View style={[Layout.row, Layout.justifyContentBetween, { marginVertical: 10 }]}>
                                     <Text style={[Fonts.p]}>12 DEC ,2022</Text>
-                                    <Text  style={[Fonts.p,{color:Colors.error}]}>-50.00 DH</Text>
-                            </View>
-                            <View style={[Layout.row,Layout.justifyContentBetween,{marginVertical:10}]}>
+                                    <Text style={[Fonts.p, { color: Colors.error }]}>-50.00 DH</Text>
+                                </View>
+                                <View style={[Layout.row, Layout.justifyContentBetween, { marginVertical: 10 }]}>
                                     <Text style={[Fonts.p]}>12 DEC ,2022</Text>
-                                    <Text  style={[Fonts.p,{color:Colors.primary}]}>+100.00 DH</Text>
-                            </View>
-                            <View style={{marginBottom:40}}></View>
+                                    <Text style={[Fonts.p, { color: Colors.primary }]}>+100.00 DH</Text>
+                                </View>
+                                <View style={{ marginBottom: 40 }}></View>
                             </View>
                         </View>
                     </View>}

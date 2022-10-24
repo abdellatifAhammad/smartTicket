@@ -9,7 +9,7 @@ const Header = ({navigation}) => {
     const {Layout,Common,Fonts} = useTheme();
     return (
         <View style={[Layout.rowHCenter,Layout.justifyContentBetween, {marginHorizontal:20,paddingTop:20}]}>
-            <TouchableOpacity style={{padding:1}}>
+            <TouchableOpacity onPress={()=>navigation.openDrawer()} style={{padding:1}}>
                 <Icon name="menu" size={24} color={Colors.white} ></Icon>
             </TouchableOpacity>
             <View style={[Layout.rowHCenter, {}]}> 
