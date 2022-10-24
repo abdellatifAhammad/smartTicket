@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
+use Spatie\Permission\Models\Permission;
 
 
 
@@ -17,20 +18,24 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-           
-           $feilds = $request->validate([
-                'lastname' => 'required|string',
-                'firstname' => 'required|string',
-                'email' => "required|string|unique:users,email|regex:'.*@insea.ac.ma'",
-                'password' => 'required|string|confirmed'
+                           
+            $validator = \Validator::make($request->input(),['lastname' => 'required|string',
+            'firstname' => 'required|string',
+            'email' => "required|string|unique:users,email|regex:'.*@insea.ac.ma'",
+            'password' => 'required|string|confirmed'
             ]);
+
             
-            
+            if($validator->fails())
+            {             
+             return response()->json($validator->messages(), 400);
+            }
+
             $user = User::create([
-                'nom' =>  $feilds['lastname'],
-                "prenom" =>  $feilds['firstname'],
-                'email' => $feilds['email'],
-                'password' => bcrypt($feilds['password'])
+                'nom' =>  $request->lastname,
+                "prenom" =>  $request->firstname,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
             ]);
 
             $token = $user->createToken("thisIsAToken")->plainTextToken;
@@ -43,23 +48,65 @@ class AuthController extends Controller
             return response()->json($response, 201);
     }
 
+    public function ControllerRegister(Request $request)
+    {
+           
+        $validator = \Validator::make($request->input(),['lastname' => 'required|string',
+        'firstname' => 'required|string',
+        'email' => "required|string|unique:users,email|regex:'.*@insea.ac.ma'",
+        'password' => 'required|string|confirmed'
+        ]);
 
+        
+        if($validator->fails())
+        {             
+         return response()->json($validator->messages(), 400);
+        }
+            
+         
+        $user = User::create([
+            'nom' =>  $request->lastname,
+            "prenom" =>  $request->firstname,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+            $token = $user->createToken("thisIsAToken")->plainTextToken;
+            $permission = Permission::create(['guard_name' => 'web', 'name' => 'Check Tickets']);
+            $user->givePermissionTo($permission);
+
+            $response = [
+                "user" => $user,
+                "token" => $token
+            ];
+
+            return response()->json($response, 201);
+    }
 
     public function login(Request $request)
     {
-        $feilds = $request->validate([
+        
+
+        $validator = \Validator::make($request->input(),[  
             'email' => 'required|string',
             'password' => 'required|string|confirmed'
-        ]);
+            ]);
+
+        
+        if($validator->fails())
+        {             
+         return response()->json($validator->messages(), 400);
+        }
+    
 
         # check email and password
-        $user = User::where('email',$feilds['email'])->first();
+        $user = User::where('email',$request->email)->first();
        
-        if(!$user || !Hash::check($feilds['password'], $user->password))
+        if(!$user || !Hash::check($request->password, $user->password))
         {
             return response()->json([
                 "message" => "Bad credentials"
-            ]);
+            ],400);
         }
         else
         {
@@ -76,6 +123,14 @@ class AuthController extends Controller
         
     }
 
+   
+    public function notLoggedIn(Request $request)
+    {
+            //
+            return response()->json(["message" => "Not logged in"], 400);
+    }
+        
+    
 
     public function logout(Request $request)
     {

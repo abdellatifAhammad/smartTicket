@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Http\Controllers\HistoryController;
 use App\Models\History;
 
+use Mail;
+use App\Mail\RememberEmail;
 
 class UserController extends Controller
 {
@@ -74,12 +76,16 @@ class UserController extends Controller
     static public function addBalance($id,$total)
     {
         // TODO substract $total from sold
-        $user = User::find($id);
+        $user = User::get()->where("id","=",$id)->first();
 
         $user->sold += $total;
 
-        HistoryController::store($total,"Added balance OR Ticket Cancel (+)");
-        return $user->save();
+        HistoryController::store($total,"+");
+
+        $user->save();
+        return response()->json([
+            "message"=>$total." was added to ".$user->prenom." ".$user->nom."'s balance"
+        ], 200);
     }
 
     /**
@@ -99,11 +105,13 @@ class UserController extends Controller
 
         $history = $user->history()->get();
         $sold = $user->sold;
-
+        
         return response()->json([
             "sold"=>$sold,
             "history"=>$history
         ], 200);
 
     }
+
+
 }

@@ -22,7 +22,10 @@ class TicketsController extends Controller
     public function index()
     {
         $user = auth('sanctum')->user();
-        return Tickets::all()->where("user_id",'=',$user->id);
+        $data = [
+            "Tickets"=>Tickets::where("user_id",'=',$user->id)->paginate()
+        ];
+        return response()->json($data, 200);
     }
 
     /**
@@ -47,7 +50,7 @@ class TicketsController extends Controller
             
             if($validator->fails())
             {             
-             return response()->json($validator->messages, 400);
+             return response()->json($validator->messages(), 400);
             }
 
             $validated = $validator->validated();
@@ -59,7 +62,10 @@ class TicketsController extends Controller
 #            dd($cs);
             if($cs>0)        
             {
-                return response()->json("".$validated['type']." for the date ".$validated['date']." already bought", 400);
+                $data = [
+                    "message"=>"".$validated['type']." for the date ".$validated['date']." already bought"
+                ];
+                return response()->json($data, 400);
             }
             // calculate total price
             if($input['type']=="Breakfast")
@@ -78,11 +84,12 @@ class TicketsController extends Controller
 
             if($user->sold < $total)
             {
-                return response()->json([
+                $data= [
                     "message"=>"Total price is greater than user's balance",
                     "total price"=>$total,
                     "balance(sold)"=>auth('sanctum')->user()->sold
-                ], 400);
+                ];
+                return response()->json($data, 400);
             }
             
             foreach($request->input() as $input)
@@ -99,13 +106,15 @@ class TicketsController extends Controller
             
             HistoryController::store($total,"Buy(-)");
 
-            return response()->json([
-                "message"=>"Tickets are Bought",
-                "Tickets"=>$request->input(),
-                "Price"=>$total,
-                "New Balance"=>auth('sanctum')->user()->sold
-                ]
-                ,201);
+            $data = 
+                [
+                    "message"=>"Tickets are Bought",
+                    "Tickets"=>$request->input(),
+                    "Price"=>$total,
+                    "New Balance"=>auth('sanctum')->user()->sold
+                ];
+            
+            return response()->json($data,201);
 
     }
 
@@ -116,8 +125,11 @@ class TicketsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)    
-    {
-        return Tickets::get()->where("ticket_id",'=',$id)->first();
+    {        
+        $data = [
+            "ticket"=>Tickets::get()->where("ticket_id",'=',$id)->first()
+        ];
+        return response()->json($data, 200);
     }
 
     /**
@@ -156,13 +168,66 @@ class TicketsController extends Controller
         
 
         if(Tickets::where("ticket_id",'=',$id)->delete())
-        {                        
-            return response()->json(["message"=>"".$ticket->type."'s Ticket for date : ".$ticket->date." was canceled"], 200);            
+        {   
+            $data = [
+                "message"=>"".$ticket->type."'s Ticket for date : ".$ticket->date." was canceled"
+            ];
+            return response()->json($data, 200);
         }
         else{
-            return response()->json(["message"=>"Ticket wasn't canceled"], 400);
-        }
+            $data = [
+                "message"=>"Ticket wasn't canceled"
+            ];
+            return response()->json($data, 400);
+        }        
+    }
 
+
+    public function check(Request $request)
+    {
+        
+
+        $user = auth("sanctum")->user();
+        
+        if($user->hasPermissionTo('Check Tickets', 'web'))
+        {
+            $validator = \Validator::make($request->input(),[
+                "user_id"=>"required",
+                "ticket_id"=>"required",
+                "date"=>"required"
+            ]);
+            
+            if($validator->fails())
+            {             
+             return response()->json($validator->messages(), 400);
+            }
+            
+    
+            $t = Tickets::get()
+            ->where("ticket_id",'=',$request->ticket_id)
+            ->where("user_id",'=',$request->user_id)
+            ->where("date",'=',new Carbon($request->date))
+            ->first();
+    
+            if(!empty($t))
+            {
+                return response()->json([
+                    "message"=>"ok"
+                ], 200);
+            }else
+            {
+                return response()->json(
+                    [
+                        "message"=>"not found"
+                    ]
+                    , 404);
+            }
+        }else
+        {
+            return response()->json([
+                "message"=>"rejected"
+            ],400);
+        }
         
     }
 }

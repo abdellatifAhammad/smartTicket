@@ -6,6 +6,8 @@ Use App\Http\Controllers\AuthController;
 Use App\Http\Controllers\TicketsController;
 Use App\Http\Controllers\UserController;
 Use App\Http\Controllers\HistoryController;
+Use App\Http\Controllers\EmailController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,16 +27,23 @@ Route::middleware('auth:sanctum')->get("/tickets", [TicketsController::class, "i
 Route::middleware('auth:sanctum')->post('/tickets/new', [TicketsController::class, "store"]);
 Route::middleware('auth:sanctum')->get('/tickets/getTicket/{id}',[TicketsController::class, "show"]);
 Route::middleware('auth:sanctum')->delete('/tickets/cancel/{id}',[TicketsController::class, "destroy"]);
+Route::middleware('auth:sanctum')->post("/check",[TicketsController::class,"check"]);
+
 
 Route::middleware('auth:sanctum')->get('/user',[UserController::class, "show"]);
 Route::middleware('auth:sanctum')->get('/user/balanceHist',[UserController::class, "balanceHistory"]);
+
+Route::middleware('auth:sanctum')->get("/remember",[EmailController::class,"sendEmail"]);
+
 
 
 // open routes
 
 
 Route::post('/register', [AuthController::class, "register"]);
+Route::post('/controller/register', [AuthController::class, "ControllerRegister"]);
 Route::post('/login', [AuthController::class, "login"]);
+Route::get('/NotLoggedIn', [AuthController::class, "notLoggedIn"])->name("NotLoggedIn");
 Route::post('/forgotpassword',function(){
     return response()->json(["res"=>"forgotPassword"], 200);
 } );
