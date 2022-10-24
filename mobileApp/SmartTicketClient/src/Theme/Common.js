@@ -56,7 +56,22 @@ export default function ({ Colors, ...args }) {
         borderColor: Colors.primary,
         display:'flex',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginRight:5,
+        marginBottom:8
+      },
+      calanderDaysNames:{
+        width:40,
+        height:40,
+        backgroundColor:Colors.white,
+        // borderRadius:20,
+        // borderWidth: 1,
+        // borderColor: Colors.primary,
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        marginRight:8,
+        marginBottom:8
       },
       calanderDay:{
         width:40,
@@ -67,7 +82,9 @@ export default function ({ Colors, ...args }) {
         borderColor: Colors.primary,
         display:'flex',
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        marginRight:8,
+        marginBottom:8
       },
       dangerAlert:{
         backgroundColor:Colors.error,
