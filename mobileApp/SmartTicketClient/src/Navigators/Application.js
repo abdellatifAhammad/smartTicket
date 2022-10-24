@@ -7,6 +7,8 @@ import { useTheme } from '@/Hooks'
 import MainNavigator from './Main'
 import { navigationRef } from './utils'
 import { Colors } from '@/Theme/Variables'
+import LoginContainer from '@/Containers/Auth/Login'
+import RegisterContainer from '@/Containers/Auth/Register'
 
 const Stack = createStackNavigator()
 
@@ -20,6 +22,26 @@ const ApplicationNavigator = () => {
         <StatusBar barStyle={'light-content'} backgroundColor={Colors.primary} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Startup" component={StartupContainer} />
+          {false?
+          <>
+          <Stack.Screen
+            name="Login"
+            component={LoginContainer}
+            options={{
+              animationEnabled: false,
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="Register"
+            component={RegisterContainer}
+            options={{
+              animationEnabled: false,
+              headerShown: false
+            }}
+          />
+          </>
+          :
           <Stack.Screen
             name="Main"
             component={MainNavigator}
@@ -27,7 +49,7 @@ const ApplicationNavigator = () => {
               animationEnabled: false,
               headerShown: false
             }}
-          />
+          />}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>

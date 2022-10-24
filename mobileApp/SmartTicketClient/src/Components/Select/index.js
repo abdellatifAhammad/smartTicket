@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { useTheme } from '@/Hooks';
 import { Colors } from '@/Theme/Variables';
 
-const Select = ({ data, label,enabled }) => {
-    const [selectedValue, setSelectedValue] = useState(data[0]);
+const Select = ({ data, label,enabled,selectValue,defaultValue,style }) => {
+    const [selectedValue, setSelectedValue] = useState(defaultValue);
     const { Layout, Fonts,Common } = useTheme();
     return (
-        <View style={{ marginTop: 15 }}>
+        <View style={[{ marginTop: 15 },{...style}]}>
             <Text style={[Fonts.h4, {color:Colors.text}]}>{label}</Text>
             <View style={[Common.select,{ overflow: 'hidden', borderRadius: 10, marginTop: 10, }]}>
                 <Picker
@@ -18,6 +18,7 @@ const Select = ({ data, label,enabled }) => {
                     selectedValue={selectedValue}
                     onValueChange={(itemValue, itemIndex) =>{
                         setSelectedValue(itemValue)
+                        selectValue(itemValue)
                     }
                     }>
                         {data.map((ele,index)=>{

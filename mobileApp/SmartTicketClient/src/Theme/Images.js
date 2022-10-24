@@ -5,8 +5,9 @@
  */
 export default function () {
   return {
-    logo: require('@/Assets/Images/TOM.png'),
+    logo: require('@/Assets/Images/logo.png'),
     man: require('@/Assets/Images/man.png'),
     ticket: require('@/Assets/Images/ticket.png'),
+    insea : require('@/Assets/Images/insea.png')
   }
 }
