@@ -78,7 +78,7 @@ const HomeContainer = ({navigation}) => {
                                 // onSnapToItem={(index) => setCurrentSlide(index)}
                                 snapEnabled={true}
                                 renderItem={({ index }) => (
-                                    <TouchableOpacity onPress={()=>{navigation.navigate('Scan Qr')}} style={{ width: '100%', height: 150, padding: 10 }}>
+                                    <TouchableOpacity onPress={()=>{navigation.navigate('Scan Qr',{value:"abdellatif"})}} style={{ width: '100%', height: 150, padding: 10 }}>
                                         <View style={[{ position: 'absolute', zIndex: 3, top: 20, left: 35, width: 150 }]}>
                                             <Text style={[Fonts.h2, { color: 'white' }]}>Launch Meal</Text>
                                             <Text style={[Fonts.h5, { color: 'white', opacity: 0.8 }]}>
