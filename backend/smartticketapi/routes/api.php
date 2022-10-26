@@ -35,13 +35,13 @@ Route::middleware('auth:sanctum')->get('/user/balanceHist',[UserController::clas
 
 Route::middleware('auth:sanctum')->get("/remember",[EmailController::class,"sendEmail"]);
 
-
-
 // open routes
+
 
 
 Route::post('/register', [AuthController::class, "register"]);
 Route::post('/controller/register', [AuthController::class, "ControllerRegister"]);
+Route::post('/guichitier/register', [AuthController::class, "GuichitierRegister"]);
 Route::post('/login', [AuthController::class, "login"]);
 Route::get('/NotLoggedIn', [AuthController::class, "notLoggedIn"])->name("NotLoggedIn");
 Route::post('/forgotpassword',function(){

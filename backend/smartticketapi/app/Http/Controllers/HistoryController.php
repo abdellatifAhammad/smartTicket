@@ -36,6 +36,16 @@ class HistoryController extends Controller
         $hist->save();
     }
 
+    static public function storeWeb($id,$amount, $transaction)
+    {
+
+        $hist = new History();
+
+        $hist->amount = $amount;
+        $hist->transaction=$transaction;
+        $hist->user_id=$id;
+        $hist->save();        
+    }
     /**
      * Display the specified resource.
      *

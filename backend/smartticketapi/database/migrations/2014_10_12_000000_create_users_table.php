@@ -32,6 +32,7 @@ return new class extends Migration
             $table->integer('num_carte_res')->nullable();
             $table->decimal('sold',5,2)->default(0);
             $table->string('image')->nullable();
+            $table->integer("type")->default(0);
         });
     }
 

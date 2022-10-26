@@ -104,7 +104,7 @@ class TicketsController extends Controller
 
             UserController::payTickets($user->id,$total);
             
-            HistoryController::store($total,"Buy(-)");
+            HistoryController::store($total,"-");
 
             $data = 
                 [

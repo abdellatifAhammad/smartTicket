@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\UserController;
+use \App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,3 +14,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::any("/loginWeb",[AuthController::class,"loginWeb"]);
+
+Route::get("/login",function (){
+    return view('Login');
+});
+
+Route::get("/",function (){
+    return view('Login');
+});
+
+Route::post("/logout",[AuthController::class,"logoutWeb"]);
+
+
+Route::post("/addBalanceWeb",[UserController::class,"addBalanceWeb"]);
+
+

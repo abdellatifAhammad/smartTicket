@@ -1,0 +1,538 @@
+_type: export
+__export_format: 4
+__export_date: 2022-10-26T00:37:51.384Z
+__export_source: insomnia.desktop.app:v2022.6.0
+resources:
+  - _id: req_b9dbc931f9074e1c999a2ff04c7690e0
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666702118664
+    created: 1666702107089
+    url: http://localhost:8000/loginWeb
+    name: New Request
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1666702107089
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_16c679fb891e4b41b650854599b3d572
+    parentId: null
+    modified: 1665351235527
+    created: 1665351235527
+    name: New Document
+    description: ""
+    scope: design
+    _type: workspace
+  - _id: req_547898e9da054883ad30b462ad1c064c
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666702743805
+    created: 1666646018639
+    url: http://localhost:8000/api/check
+    name: check
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"ticket_id":1,
+        	"user_id":8,
+        	"date":"2022-11-11"
+        }
+    parameters: []
+    headers:
+      - id: pair_6fd6cf43635e4095bf452eadf586daad
+        name: Authorization
+        value: Bearer 10|hSvAZ3hc0E18ea89mZCw1y0JSRn1fUcnFOHZtcRn
+        description: ""
+      - name: Content-Type
+        value: application/json
+        id: pair_9cb0e780190943efbb73a617a63204e0
+    authentication: {}
+    metaSortKey: -1666646018639
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3e99f84b0f5545be811b8b5c2c83cc3d
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666651318000
+    created: 1666604126851
+    url: http://localhost:8000/api/remember
+    name: SendTestEmail
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_a0cc9bae611148bf92d04084291ea7fa
+        name: Authorization
+        value: Bearer 1|VcstVCwXix3SGZgx5YdqSfkTSwTbECJb5KaU3llO
+        description: ""
+    authentication: {}
+    metaSortKey: -1666604126851
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_62919d8350cf4acc840137ef2af6791e
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666733475621
+    created: 1666568809244
+    url: http://localhost:8000/api/user/balanceHist
+    name: balanceAndHistory
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_fd799c1de7484a7090ffebc1a5caa125
+        name: Authorization
+        value: Bearer 28|NFTxIygOqEgcrYjH3CaXo4PsTwyUv0Si6K7vSFtB
+        description: ""
+    authentication: {}
+    metaSortKey: -1666568809244
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_af06350995c14df3984cedf941f75b3d
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666606502630
+    created: 1666568497630
+    url: http://localhost:8000/api/user
+    name: userData
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_27a65d47b32c450197bf255a8f81dbc6
+        name: Authorization
+        value: Bearer 2|G6rzWCy5mqLoTs7pqybdNkjIjuBS2wGalrEDYRL4
+        description: ""
+    authentication: {}
+    metaSortKey: -1666568497630
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1d1426d40ff7451daadf228ef795bccc
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666606552145
+    created: 1666563109160
+    url: http://localhost:8000/api/tickets/cancel/10
+    name: Cancel
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - id: pair_9edb16b1e31c4818a604531a05870377
+        name: Authorization
+        value: Bearer 2|G6rzWCy5mqLoTs7pqybdNkjIjuBS2wGalrEDYRL4
+        description: ""
+    authentication: {}
+    metaSortKey: -1666563109160
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5b704be4a19d44fd8403d88342e18db0
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666744635855
+    created: 1666541968697
+    url: http://localhost:8000/api/tickets/new
+    name: new ticket
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        [
+        {
+        		"type":"Launch",
+        		"date":"2022-11-10"	
+        },
+        	{
+        		"type":"Breakfast",
+        		"date":"2022-11-10"	
+        },
+        	{
+        		"type":"Dinner",
+        		"date":"2022-11-10"	
+        }
+        ]
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_485e550aec0b44e093a19c27cfd69662
+        disabled: false
+      - id: pair_46ad62f14ab843eca52396a16a0ab946
+        name: Authorization
+        value: Bearer 92|W9ePs3G00KUiC5h4F2ihVMx6JNmh7T9Bq2iRAELe
+        description: ""
+      - id: pair_108754ed00af40b7b0d48b24480b6c6f
+        name: ""
+        value: ""
+        description: ""
+    authentication: {}
+    metaSortKey: -1666541968697
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_339d319ba80e4daca5790be4c82a0651
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666730442058
+    created: 1666535918630
+    url: http://localhost:8000/api/register
+    name: register
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_4e1319922fdb4b2c9afa37200d1ec3f2
+          name: lastname
+          value: Lach4
+          description: ""
+        - id: pair_ea2d8ac5d156485ea73778ed5c32fd21
+          name: firstname
+          value: Med4
+          description: ""
+        - id: pair_d4d26f9c20e148329e3df424b84cd576
+          name: email
+          value: MedLach5@insea.ac.ma
+          description: ""
+        - id: pair_66383fdd64a346d2a215afd2fd7597c6
+          name: password
+          value: password
+          description: ""
+        - id: pair_c548b7a0de5b4531ad6165f95298c710
+          name: password_confirmation
+          value: password
+          description: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_a73bb1c34bcc46489423a5007559061f
+        disabled: true
+    authentication: {}
+    metaSortKey: -1666535918630
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5a38092e78a64391b519449c836b2bfd
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666733398189
+    created: 1666570834775
+    url: http://localhost:8000/api/controller/register
+    name: Controllerregister
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        
+        {
+        	"firstname":"med",
+        	"lastname":"lach",
+        	"email":"Controller@insea.ac.ma",
+        	"password":"password",
+        	"password_confirmation":"password"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a73bb1c34bcc46489423a5007559061f
+        disabled: false
+    authentication: {}
+    metaSortKey: -1666533906084
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_67aff07fe6f24e48ad8bbdd86b52699e
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666733414188
+    created: 1666727406813
+    url: http://localhost:8000/api/guichitier/register
+    name: guichiteirRegister
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        
+        {
+        	"firstname":"med",
+        	"lastname":"lach",
+        	"email":"guichitier@insea.ac.ma",
+        	"password":"password",
+        	"password_confirmation":"password"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a73bb1c34bcc46489423a5007559061f
+        disabled: false
+    authentication: {}
+    metaSortKey: -1666532899811
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2fc11818fa404fcd8e662fdae118ccb1
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666742776944
+    created: 1665874853937
+    url: " http://localhost:8000/api/login"
+    name: login
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email":"MedLach@insea.ac.ma",
+        	"password":"password",
+        	"password_confirmation":"password"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_4cc4ea7eb2c242ef808f83e228714b61
+        disabled: false
+    authentication: {}
+    metaSortKey: -1665874853937
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6f5d1085e4144245bf4568ae950a5a75
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666536817550
+    created: 1666536809541
+    url: " http://localhost:8000/api/forgotpassword"
+    name: forgotPassword
+    description: ""
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_aa1a0d45de1a444381449dd906602433
+          name: email
+          value: email@insea.ac.ma
+          description: ""
+        - id: pair_3600ae7f44534248918459c0c3d995a3
+          name: password
+          value: password
+          description: ""
+        - id: pair_9472d7efc6ad49b7af0ddf543da90446
+          name: password_confirmation
+          value: password
+          description: ""
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+    authentication: {}
+    metaSortKey: -1665838728572
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7e828866c3a747d9a867f9a55d99a9a5
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666648487202
+    created: 1665802603207
+    url: http://localhost:8000/api/tickets
+    name: ShowTickets
+    description: ""
+    method: GET
+    body:
+      mimeType: multipart/form-data
+      params: []
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_7717a079e72d47c09033219f3571d498
+        disabled: true
+      - id: pair_395cd3174a0b4dc3819cccb7ce2fc5b2
+        name: Authorization
+        value: Bearer 13|5ykReLoM674LvFq2oHu76f2iRhs5bKNMREE89pEB
+        description: ""
+    authentication: {}
+    metaSortKey: -1665802603207
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6b3f57c4cd934afab2977ccb39c2b2a3
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666648496037
+    created: 1665351235577
+    url: http://localhost:8000/api/tickets/getTicket/5
+    name: getTicket
+    description: ""
+    method: GET
+    body:
+      mimeType: multipart/form-data
+      params: []
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_cc494306c7014d44aab03284d6f60540
+        disabled: false
+      - id: pair_4972f9d64af0441e8819d94f3a4dfda8
+        name: Authorization
+        value: Bearer 13|5ykReLoM674LvFq2oHu76f2iRhs5bKNMREE89pEB
+        description: ""
+    authentication:
+      type: bearer
+      token: 1|Riqui93Wdv2ehXP9fnt4hBc4gJK9C9S4QKHy2JVu
+    metaSortKey: -1665351235577
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_543ffb5ceed0dade2edf9ef5d0268e6432d0b71e
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1665351235562
+    created: 1665351235562
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: null
+    color: null
+    isPrivate: false
+    metaSortKey: 1665351235562
+    _type: environment
+  - _id: jar_543ffb5ceed0dade2edf9ef5d0268e6432d0b71e
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666702776559
+    created: 1665351235567
+    name: Default Jar
+    cookies:
+      - key: XSRF-TOKEN
+        value: eyJpdiI6IkNmSVNaTzhEcDFLT3dJRFdoVjlNS0E9PSIsInZhbHVlIjoiSS9peFBZSUtLV2pRWkVuZ0lLMWRUWE5vRExlUDFuSjdYSFBQUXFvN2N2LysyTVVQRmtSSFR0dWNVKzlGRkdIR2NOeG1QSnkzYlZLUEU3MVM5OWtzcXNxTFZES3p5ZHR3YVV5UjhjS3I0OHNXR05jZUhzZEh2bVluZ1BPcWsrSEEiLCJtYWMiOiI5ZGQ5MTk4MTI1ZWU1ODU5YjdhYTM5YTNmMGQxZDIxMTI5ZjVjYTRiZGM4MGUwMWM3Mzg1MDM0ZTRhNDg2YzYwIiwidGFnIjoiIn0%3D
+        expires: 2022-10-16T01:45:29.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2022-10-09T21:34:21.732Z
+        lastAccessed: 2022-10-15T23:45:29.488Z
+        id: "9916951827085436"
+      - key: todos_session
+        value: eyJpdiI6IkFCUjZ5eStzWU9LcFh5QnFGbkZFRWc9PSIsInZhbHVlIjoicFFvOERQeHhsMlNHR0cvaTlVbmQ1bnNPS2wvV2J1R2JqZk5ML3NZeitCeXhjZWw4Q2FyTmxUeVo2WXhtZVhKNWI5dE5wK1h3UGo4YW5lSy83bVhOYXlnbU1TeUtwRy81SUN0VzRLam5SVEM2YW9VWS9tL29OUStQRWhxSmoxckYiLCJtYWMiOiJhMGY2ZTc0ODU5NGIxMzIzOTVkMTYxNTlkNWM5MDM2ODQ0YmNhYTgzM2NkMTE0NTA0ODc2Y2M3NjU0MmIxMzU3IiwidGFnIjoiIn0%3D
+        expires: 2022-10-09T23:38:40.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        httpOnly: true
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2022-10-09T21:34:21.735Z
+        lastAccessed: 2022-10-09T21:38:40.639Z
+        id: "29473507575497404"
+      - key: laravel_session
+        value: eyJpdiI6IlRnNUtNQ1NGSjFHSGJsc2NmZjJQU1E9PSIsInZhbHVlIjoiWEQ3dGoxNmN1UUxpNC94TVFLNEUxN0NNWVFTaFdxTHNCQ3czekgvVm1YTC9obDBDbWxnQUMrQWF0ZElGNUhrTmNBWjhIU05DOVROWk9reUdZQzFkdlRGTzlrL28vT0pZdnFFUG9MMitIUjloT0h5YXZHSWNyUnpYVG40VEgxV1giLCJtYWMiOiJmMWQzNWJkNDczOGNjMGYwODlkOTVhMzhkZDIzYzkyMTBhYzc0N2VjYTJhZWY5OWFkZGI3OTU5MDc4MzU5YWFlIiwidGFnIjoiIn0%3D
+        expires: 2022-10-25T14:59:36.000Z
+        maxAge: 7200
+        domain: localhost
+        path: /
+        httpOnly: true
+        extensions:
+          - samesite=lax
+        hostOnly: true
+        creation: 2022-10-15T23:45:29.489Z
+        lastAccessed: 2022-10-25T12:59:36.559Z
+        id: "2444022336221685"
+    _type: cookie_jar
+  - _id: spc_136d67bf72df40e69bb57738a6059886
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1666538488583
+    created: 1665351235553
+    fileName: SmartTicketApi
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: uts_fceb3eaee9d345eb9a19c5e0342c8226
+    parentId: wrk_16c679fb891e4b41b650854599b3d572
+    modified: 1665351235579
+    created: 1665351235579
+    name: Example Test Suite
+    _type: unit_test_suite

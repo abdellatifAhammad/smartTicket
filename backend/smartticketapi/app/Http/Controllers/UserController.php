@@ -88,6 +88,35 @@ class UserController extends Controller
         ], 200);
     }
 
+    static public function addBalanceWeb(Request $request)
+    {
+        $id = $request->id;
+        $total = $request->total;
+        // TODO substract $total from sold
+        $user = User::get()->where("id","=",$id)->first();
+
+        if($total>=0)
+        {
+            $old = $user->sold;
+
+            $user->sold = $total;
+    
+            if($total - $old > 0)
+            {
+                HistoryController::storeWeb($id,$total-$old,"+");
+            }else
+            {
+                HistoryController::storeWeb($id,$old - $total,"-");
+            }    
+        }
+
+
+        $user->save();
+        $users = User::get()->all();
+        $request->session()->put('data',["guichitier"=>$user,"users"=>$users]);
+        return view("home");
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -103,7 +132,7 @@ class UserController extends Controller
     {
         $user = auth("sanctum")->user();
 
-        $history = $user->history()->get();
+        $history = $user->history()->orderBy("created_at")->get();
         $sold = $user->sold;
         
         return response()->json([
